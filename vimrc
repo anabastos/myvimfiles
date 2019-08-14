@@ -31,6 +31,7 @@ Plug 'duggiefresh/vim-easydir'
 Plug 'junegunn/goyo.vim'
 Plug 'wikitopian/hardmode'
 Plug 'vimwiki/vimwiki'
+Plug 'wakatime/vim-wakatime'
 
 " * Support *
 Plug 'tpope/vim-dispatch'
@@ -52,17 +53,20 @@ Plug 'tomasr/molokai'
 " * Languages *
 Plug 'b4winckler/vim-objc'
 Plug 'rodjek/vim-puppet'
-Plug 'nsf/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
 Plug 'fatih/vim-go'
 Plug 'dag/vim-fish'
 Plug 'pangloss/vim-javascript'
 Plug 'gkz/vim-ls'
+Plug 'elixir-lang/vim-elixir'
+Plug 'slashmili/alchemist.vim'
 Plug 'kchmck/vim-coffee-script'
 Plug 'hashivim/vim-terraform'
 Plug 'hashivim/vim-packer'
 Plug 'hashivim/vim-consul'
 Plug 'hashivim/vim-vaultproject'
 Plug 'OrangeT/vim-csharp'
+Plug 'rust-lang/rust.vim'
+Plug 'elmcast/elm-vim'
 Plug 'mustache/vim-mustache-handlebars'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'digitaltoad/vim-pug'
@@ -73,18 +77,15 @@ Plug 'vim-erlang/vim-erlang-compiler'
 Plug 'vim-erlang/vim-erlang-omnicomplete'
 Plug 'vim-erlang/vim-erlang-tags'
 Plug 'osyo-manga/vim-monster'
-Plug 'zchee/deoplete-jedi'
 Plug 'uarun/vim-protobuf'
 Plug 'CyCoreSystems/vim-cisco-ios'
 Plug 'tpope/vim-markdown'
 Plug 'jtratner/vim-flavored-markdown'
-Plug 'evanmiller/nginx-vim-syntax'
 Plug 'leafgarland/typescript-vim'
 Plug 'PProvost/vim-ps1'
 Plug 'Matt-Deacalion/vim-systemd-syntax'
 Plug 'zainin/vim-mikrotik'
 Plug 'rust-lang/rust.vim'
-Plug 'jodosha/vim-godebug'
 
 " * JS Beautify *
 Plug 'michalliu/jsruntime.vim'
@@ -92,13 +93,7 @@ Plug 'michalliu/jsoncodecs.vim'
 
 " * Omnicompletion *
 Plug 'neomake/neomake'
-Plug 'Shougo/deoplete.nvim'
-Plug 'carlitux/deoplete-ternjs'
-Plug 'zchee/deoplete-go', { 'do': 'make' }
-" Plug 'zchee/deoplete-clang'
 Plug 'OmniSharp/omnisharp-vim'
-Plug 'Robzz/deoplete-omnisharp'
-Plug 'mhartington/deoplete-typescript'
 
 " * Search *
 Plug 'haya14busa/incsearch.vim'
@@ -217,8 +212,6 @@ set completeopt=menu,noselect
 "   autocmd InsertLeave * pclose
 " augroup end
 
-" Incsearch
-set inccommand=split
 " }}}
 " ##### General mappings  {{{
 " ##### Tabs {{{
