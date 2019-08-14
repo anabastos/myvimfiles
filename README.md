@@ -1,11 +1,7 @@
 # myvimfiles
 Ana Bastos vim files ⌨️✨❤️
 
-Based on [derekstavis's vimfiles](https://github.com/derekstavis/vimfiles) which are based on [greenboxal's vimfiles](https://github.com/greenboxal/vimfiles) which are based on [Pedro Franceschi's vimfiles](https://github.com/pedrofranceschi/vimfiles).
-
-#### What's included
-
-TODO
+Based on [derekstavis's vimfiles](https://github.com/derekstavis/vimfiles) which are based on [greenboxal's vimfiles](https://github.com/greenboxal/vimfiles) which are based on [Pedro Franceschi's vimfiles](https://github.com/pedrofranceschi/vimfiles) but removing a lot of stuff that I don't need.
 
 #### Installing (step by step)
 
@@ -22,7 +18,7 @@ Clone my vimfiles repo:
 
 Rename the repo to .vim in your home directory:
 
-    mv vimfiles ~/.vim
+    mv myvimfiles ~/.vim
 
 Link vimrc and gvimrc to your home directory:
 
@@ -48,4 +44,3 @@ Execute plugin specific installation
 	bash ./install.sh
 
 Restart vim and enjoy! :)
-
