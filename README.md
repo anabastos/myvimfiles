@@ -36,7 +36,7 @@ Open Vim:
 
 Install bundles by typing
 
-	:PluginInstall
+	:PlugInstall
 
 Execute plugin specific installation
 
