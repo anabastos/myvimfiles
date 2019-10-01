@@ -8,6 +8,8 @@ call plug#begin('~/.vim/plugged')
 " *~~ Plugins ~~*
 " * Base *
 Plug 'vim-airline/vim-airline'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'teranex/jk-jumps.vim'
 Plug 'scrooloose/nerdtree'
@@ -86,6 +88,16 @@ Plug 'PProvost/vim-ps1'
 Plug 'Matt-Deacalion/vim-systemd-syntax'
 Plug 'zainin/vim-mikrotik'
 Plug 'rust-lang/rust.vim'
+
+" * Clojure *
+Plug 'venantius/vim-cljfmt'
+Plug 'guns/vim-clojure-static'
+Plug 'tpope/vim-fireplace'
+Plug 'guns/vim-clojure-highlight'
+Plug 'guns/vim-sexp'
+Plug 'luochen1990/rainbow'
+Plug 'tpope/vim-sexp-mappings-for-regular-people'
+Plug 'vim-scripts/cljfold.vim'
 
 " * JS Beautify *
 Plug 'michalliu/jsruntime.vim'
@@ -182,6 +194,7 @@ set autoread
 
 " Enable syntax highlighting
 syntax on
+filetype plugin indent on
 
 " Sane defaults
 set expandtab
@@ -215,14 +228,14 @@ set completeopt=menu,noselect
 " }}}
 " ##### General mappings  {{{
 " ##### Tabs {{{
-nnoremap <leader>t :tabnew<cr>
-nnoremap <leader>e :tabedit
-nnoremap <leader>n :tabnext<cr>
-nnoremap <leader>p :tabprevious<cr>
+nnoremap <space>t :tabnew<cr>
+nnoremap <space>e :tabedit
+nnoremap <space>n :tabnext<cr>
+nnoremap <space>p :tabprevious<cr>
 " }}}
 " ##### IDE Like {{{
-nmap <leader>1 :TagbarToggle<CR>
-nmap <leader>2 :NERDTreeToggle<CR>
+nmap <space>1 :TagbarToggle<CR>
+nmap <space>2 :NERDTreeToggle<CR>
 " }}}
 " ##### Panes {{{
 fun! RemapPaneArrows()
@@ -295,33 +308,33 @@ nnoremap ,sc :set spell!<cr>
 " }}}
 " ##### Misc {{{
 " Edit and load vimrc
-nnoremap <leader>ev :vsplit $MYVIMRC<cr>
-nnoremap <leader>sv :source $MYVIMRC<cr>
+nnoremap <space>ev :vsplit $MYVIMRC<cr>
+nnoremap <space>sv :source $MYVIMRC<cr>
 
 " Wrap current paragraph
-noremap <leader>w gqap
+noremap <space>w gqap
 
 " Toggles hlsearch
-nnoremap <leader>hs :set hlsearch!<cr>
+nnoremap <space>hs :set hlsearch!<cr>
 
 " Maps <C-C> to <esc>
 noremap <C-C> <esc>
 
 " Go full-screen
-nnoremap <leader>fs :set lines=999 columns=9999<cr>
+nnoremap <space>fs :set lines=999 columns=9999<cr>
 
 " Set current file executable
-nnoremap <leader>xx :!chmod +x %<cr>
+nnoremap <space>xx :!chmod +x %<cr>
 
 " Close Quickfix and Preview
-nnoremap <leader>q :pclose<cr>:cclose<cr>
+nnoremap <space>q :pclose<cr>:cclose<cr>
 
 " OS Clipboard
-vnoremap <leader>c "*y
-vnoremap <leader>v "*p
-vnoremap <leader>V "*P
-nnoremap <leader>v "*p
-nnoremap <leader>V "*P
+vnoremap <space>c "*y
+vnoremap <space>v "*p
+vnoremap <space>V "*P
+nnoremap <space>v "*p
+nnoremap <space>V "*P
 
 " Fix tmux navigation
 nnoremap <silent> <BS> :TmuxNavigateLeft<cr>
@@ -330,20 +343,20 @@ nnoremap <silent> <BS> :TmuxNavigateLeft<cr>
 " ##### Plugin settings  {{{
 " ##### Fugitive  {{{
 " (thanks to Steve Losh's vimrc)
-nnoremap <leader>gd :Gdiff<cr>
-nnoremap <leader>gs :Gstatus<cr>
-nnoremap <leader>gw :Gwrite<cr>
-nnoremap <leader>ga :Gadd<cr>
-nnoremap <leader>gb :Gblame<cr>
-nnoremap <leader>gci :Gcommit<cr>
-nnoremap <leader>ge :Gedit<cr>
-nnoremap <leader>gm :Gmove
-nnoremap <leader>gr :Gread<cr>
-nnoremap <leader>grm :Gremove<cr>
-nnoremap <leader>gp :Git push
+nnoremap <space>gd :Gdiff<cr>
+nnoremap <space>gs :Gstatus<cr>
+nnoremap <space>gw :Gwrite<cr>
+nnoremap <space>ga :Gadd<cr>
+nnoremap <space>gb :Gblame<cr>
+nnoremap <space>gci :Gcommit<cr>
+nnoremap <space>ge :Gedit<cr>
+nnoremap <space>gm :Gmove
+nnoremap <space>gr :Gread<cr>
+nnoremap <space>grm :Gremove<cr>
+nnoremap <space>gp :Git push
 " }}}
 " ##### NERDTree  {{{
-noremap <leader>ft :NERDTreeToggle<CR>
+noremap <space>ft :NERDTreeToggle<CR>
 
 " Don't fuck up vim's default file browser
 let g:NERDTreeHijackNetrw = 0
@@ -375,7 +388,7 @@ map P <Plug>(miniyank-autoPut)
 map <C-m> <Plug>(miniyank-cycle)
 " }}}
 " ##### Number toggle  {{{
-let g:NumberToggleTrigger="<leader>ll"
+let g:NumberToggleTrigger="<space>ll"
 "}}}
 " ##### togglelist {{{
 let g:toggle_list_copen_command="Copen"
@@ -425,13 +438,13 @@ let g:tmuxline_preset = {
 let g:terraform_fmt_on_save = 1
 " }}}
 " ##### vim-go {{{
-au FileType go nmap <Leader>iD <Plug>(go-def-split)
-au FileType go nmap <Leader>id <Plug>(go-def-vertical)
-au FileType go nmap <Leader>iH <Plug>(go-doc)
-au FileType go nmap <Leader>ih <Plug>(go-doc-vertical)
-au FileType go nmap <Leader>ii <Plug>(go-implements)
-au FileType go nmap <Leader>rr <Plug>(go-rename)
-au FileType go nmap <Leader>rI <Plug>(go-imports)
+au FileType go nmap <space>iD <Plug>(go-def-split)
+au FileType go nmap <space>id <Plug>(go-def-vertical)
+au FileType go nmap <space>iH <Plug>(go-doc)
+au FileType go nmap <space>ih <Plug>(go-doc-vertical)
+au FileType go nmap <space>ii <Plug>(go-implements)
+au FileType go nmap <space>rr <Plug>(go-rename)
+au FileType go nmap <space>rI <Plug>(go-imports)
 " }}}
 " ##### vim-wiki {{{
 let g:vimwiki_ext2syntax = {'.md': 'markdown',
@@ -446,7 +459,7 @@ let g:OmniSharp_timeout = 10
 augroup omnisharp
   autocmd!
 
-  autocmd FileType cs nnoremap <leader>b :wa!<cr>:OmniSharpBuildAsync<cr><Paste>
+  autocmd FileType cs nnoremap <space>b :wa!<cr>:OmniSharpBuildAsync<cr><Paste>
   autocmd CursorHold *.cs call OmniSharp#TypeLookupWithoutDocumentation()
 augroup END
 " }}}
@@ -494,7 +507,7 @@ autocmd FileType vim set foldmethod=marker
 " }}}
 " ##### XML {{{
 " Automatically format XML files
-nnoremap <leader>xb :%s,>[ <tab>]*<,>\r<,g<cr> gg=G
+nnoremap <space>xb :%s,>[ <tab>]*<,>\r<,g<cr> gg=G
 " }}}
 " ##### LiveScript {{{
 autocmd BufRead,BufNewFile *.ls set filetype=ls
@@ -531,5 +544,9 @@ autocmd FileType terraform set expandtab
 " ##### Docker {{{
 autocmd BufRead,BufNewFile Dockerfile* set filetype=dockerfile
 autocmd BufRead,BufNewFile Rockerfile* set filetype=dockerfile
+" }}}
+" ##### Clojure {{{
+let g:rainbow_active = 1
+let g:clojure_foldwords = "def,ns"
 " }}}
 " }}}
